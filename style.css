@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Black & Gold Theme */
+/* Island Barter Exchange - Black & Gold Theme */
 :root {
-  --gold: #d4af37;
+  --gold-primary: #d4af37;
   --gold-light: #f4d03f;
   --gold-dark: #b8860b;
-  --black: #0a0a0a;
-  --black-light: #1a1a1a;
+  --black-primary: #000000;
+  --black-secondary: #0a0a0a;
+  --gray-dark: #1a1a1a;
+  --gray-medium: #2d2d2d;
 }
 
 * {
@@ -23,56 +25,55 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--black);
-  color: #ffffff;
+  background-color: var(--black-primary);
+  color: white;
   line-height: 1.6;
-}
-
-/* Typography */
-h1, h2, h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
-/* Gold accent utilities */
-.text-gold {
-  color: var(--gold);
-}
-
-.bg-gold {
-  background-color: var(--gold);
-}
-
-.border-gold {
-  border-color: var(--gold);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--black);
+  background: var(--black-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--gold-dark);
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: var(--gold-primary);
+}
+
+/* Typography */
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Gold text gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold border glow */
+.border-gold-glow {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 /* Video container */
 .video-container {
   position: relative;
+  width: 100%;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  max-width: 100%;
-  background: #000;
-  border: 4px solid var(--gold);
 }
 
 .video-container iframe {
@@ -83,20 +84,79 @@ h1, h2, h3 {
   height: 100%;
 }
 
-/* FAQ details styling */
-details > summary {
-  list-style: none;
+/* Card hover effects */
+.benefit-card {
+  transition: all 0.3s ease;
 }
 
-details > summary::-webkit-details-marker {
-  display: none;
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
 }
 
-details[open] summary span:last-child {
-  transform: rotate(45deg);
+/* FAQ details animation */
+details[open] summary ~ * {
+  animation: sweep 0.3s ease-in-out;
 }
 
-/* Hover effects */
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+@keyframes sweep {
+  0%    {opacity: 0; transform: translateY(-10px)}
+  100%  {opacity: 1; transform: translateY(0)}
+}
+
+/* Button shine effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-shine:hover::after {
+  left: 100%;
+}
+
+/* Image frame */
+.img-gold-frame {
+  border: 4px solid var(--gold-primary);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+/* Selection color */
+::selection {
+  background: var(--gold-primary);
+  color: black;
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 2px;
+}
+
+/* Mobile menu animation */
+@media (max-width: 768px) {
+  .mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
 }
