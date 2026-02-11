@@ -3,367 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Island Barter Exchange | Trade Without Cash</title>
-  <meta name="description" content="Hawaii's premier barter network. Trade goods & services across Hawaii, Las Vegas, SF Bay Area & New Orleans. Join 500+ businesses saving cash.">
+  <title>Island Barter Exchange</title>
+  <meta name="description" content="Trade system across Hawaii, Las Vegas, SF Bay Area and New Orleans. Join Island Barter Exchange.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-black text-white">
   <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <a href="#" class="logo">
-          <span class="logo-icon">🌺</span>
-          <span class="logo-text">Island Barter</span>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-yellow-600/30">
+    <div class="container mx-auto px-6">
+      <nav class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2 text-yellow-500 font-bold text-xl">
+          <span>🌺</span>
+          <span>Island Barter</span>
         </a>
-        <button class="mobile-menu-btn" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#kim">Meet Kim</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact" class="btn btn-primary">Join Now</a></li>
+        <ul class="hidden md:flex items-center gap-8 text-sm">
+          <li><a href="#benefits" class="text-gray-300 hover:text-yellow-500 transition">Benefits</a></li>
+          <li><a href="#kim" class="text-gray-300 hover:text-yellow-500 transition">Meet Kim</a></li>
+          <li><a href="#faq" class="text-gray-300 hover:text-yellow-500 transition">FAQ</a></li>
+          <li><a href="#contact" class="px-4 py-2 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition">Join Now</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">🏝️ Serving Hawaii, Las Vegas, SF Bay & New Orleans</div>
-        <h1 class="hero-title">Trade What You Have<br>for What You Need</h1>
-        <p class="hero-subtitle">Join 500+ businesses in our trusted barter network. Convert excess inventory and capacity into valuable goods and services—without spending cash.</p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary btn-large">Start Trading Free</a>
-          <a href="#how-it-works" class="btn btn-secondary btn-large">See How It Works</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">$2.4M</span>
-            <span class="stat-label">Trade Volume</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">500+</span>
-            <span class="stat-label">Active Members</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">4</span>
-            <span class="stat-label">Cities Served</span>
-          </div>
-        </div>
-      </div>
+  <!-- Video Hero Section -->
+  <section class="pt-16 bg-black">
+    <div class="w-full aspect-video max-h-[70vh] bg-gray-900 border-y-4 border-yellow-600">
+      <iframe 
+        class="w-full h-full"
+        src="https://www.youtube.com/embed/9Q-ovtIZPo4?autoplay=0&rel=0" 
+        title="Island Barter Exchange Video"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
     </div>
   </section>
 
-  <!-- Trust Bar -->
-  <section class="trust-bar">
-    <div class="container">
-      <p class="trust-text">Featured in:</p>
-      <div class="trust-logos">
-        <span>Hawaii Business Magazine</span>
-        <span>•</span>
-        <span>Pacific Business News</span>
-        <span>•</span>
-        <span>Las Vegas Review-Journal</span>
-      </div>
+  <!-- Tagline Section -->
+  <section class="py-20 bg-black text-center">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-5xl font-serif text-yellow-500 mb-6">Island Barter Exchange Brings You The Best...</h2>
+      <h3 class="text-2xl md:text-4xl font-serif text-white mb-4">Trade system across the islands to Las Vegas and beyond</h3>
+      <p class="text-xl text-yellow-600 italic">(PLUS: Elevate experiences for yourself and your family)</p>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section id="how-it-works" class="how-it-works">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Simple Process</span>
-        <h2 class="section-title">How Barter Works</h2>
-        <p class="section-subtitle">Three easy steps to start trading</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <div class="step-icon">📝</div>
-          <h3 class="step-title">Join the Network</h3>
-          <p class="step-desc">Sign up and list your business. There's no fee to join—just a small commission on successful trades.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <div class="step-icon">🤝</div>
-          <h3 class="step-title">Find Trades</h3>
-          <p class="step-desc">Browse our member directory or let our Trade Director match you with perfect trading partners.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div class="step-icon">💎</div>
-          <h3 class="step-title">Trade & Save</h3>
-          <p class="step-desc">Exchange goods and services using trade dollars. We handle the paperwork and record-keeping.</p>
-        </div>
-      </div>
+  <!-- Main Hero -->
+  <section class="py-16 bg-gradient-to-b from-black to-gray-900">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-5xl font-serif text-yellow-500 mb-6">Join Us and let barter re-define what's possible for you</h1>
+      <h2 class="text-xl md:text-2xl text-white mb-8">Online Barter - Hawaii, Las Vegas, SF Bay Area and New Orleans</h2>
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        Barter is the oldest form of exchange in the world—and it's still one of the best business options available today. You can use trade to increase your cash flow, leverage your excess capacity, reach new customers and upgrade your lifestyle.
+      </p>
+      <p class="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">
+        Tens of thousands of businesses in the United States alone utilize barter, and we are here to make sure the process is safe, secure, and enjoyable.
+      </p>
     </div>
   </section>
 
   <!-- Benefits -->
-  <section id="benefits" class="benefits">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Why Barter?</span>
-        <h2 class="section-title">Benefits of Trading</h2>
-      </div>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">💰</div>
-          <h3 class="benefit-title">Conserve Cash Flow</h3>
-          <p class="benefit-desc">Preserve liquid assets by trading for essential goods and services instead of paying cash.</p>
+  <section id="benefits" class="py-20 bg-black">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-serif text-yellow-500 text-center mb-16">Benefits of Island Barter Exchange</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-6 border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 hover:border-yellow-500 transition group">
+          <h3 class="text-xl font-semibold text-yellow-500 mb-4 group-hover:text-yellow-400">Leverage Your Excess Capacity, Inventory Or Time</h3>
+          <p class="text-gray-300">Convert your excess commodities to useful items and services. E.g., Excess produce for whole house cleaning; dental cleaning for a 2-night stay at a hotel; handyman services for restaurant reservation, etc.</p>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📈</div>
-          <h3 class="benefit-title">Attract New Customers</h3>
-          <p class="benefit-desc">Reach customers you'd never access otherwise through our network of 500+ businesses.</p>
+        
+        <div class="p-6 border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 hover:border-yellow-500 transition group">
+          <h3 class="text-xl font-semibold text-yellow-500 mb-4 group-hover:text-yellow-400">Attract New Customers</h3>
+          <p class="text-gray-300">Reach new customers that you had no access to—or had no idea existed. Gain exposure to a wider network of potential clients through the barter community, drawing in new business opportunities in Hawaii and Las Vegas that you might not reach otherwise.</p>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🏖️</div>
-          <h3 class="benefit-title">Upgrade Your Lifestyle</h3>
-          <p class="benefit-desc">Access luxury hotels, fine dining, and experiences in Hawaii, Vegas, and beyond.</p>
+        
+        <div class="p-6 border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 hover:border-yellow-500 transition group">
+          <h3 class="text-xl font-semibold text-yellow-500 mb-4 group-hover:text-yellow-400">Conserve Cash Flow</h3>
+          <p class="text-gray-300">Preserve your liquid assets by bartering for essential goods and services instead of paying cash, allowing you to allocate funds to other critical areas of your operations.</p>
         </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📦</div>
-          <h3 class="benefit-title">Move Excess Inventory</h3>
-          <p class="benefit-desc">Convert excess capacity and inventory into valuable products and services.</p>
+        
+        <div class="p-6 border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 hover:border-yellow-500 transition group">
+          <h3 class="text-xl font-semibold text-yellow-500 mb-4 group-hover:text-yellow-400">Upgrade Your Lifestyle</h3>
+          <p class="text-gray-300">Access exciting experiences like travel, fine dining, and family adventures in Hawaii and Las Vegas that you might not otherwise pursue, enhancing your personal life through barter trades without dipping into your cash reserves.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Real Trade Examples -->
-  <section class="trade-examples">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Real Trades</span>
-        <h2 class="section-title">Recent Transactions</h2>
-      </div>
-      <div class="trades-grid">
-        <div class="trade-card">
-          <div class="trade-parties">
-            <span class="trade-party">🦷 Dental Office</span>
-            <span class="trade-arrow">⇄</span>
-            <span class="trade-party">🏨 Luxury Hotel</span>
-          </div>
-          <p class="trade-desc">"Cleanings & whitening traded for 2-night Waikiki suite stays"</p>
-          <span class="trade-value">$2,400 trade value</span>
-        </div>
-        <div class="trade-card">
-          <div class="trade-parties">
-            <span class="trade-party">🔧 Handyman Service</span>
-            <span class="trade-arrow">⇄</span>
-            <span class="trade-party">🍽️ Restaurant Group</span>
-          </div>
-          <p class="trade-desc">"Property repairs traded for private dining experiences"</p>
-          <span class="trade-value">$5,800 trade value</span>
-        </div>
-        <div class="trade-card">
-          <div class="trade-parties">
-            <span class="trade-party">🌺 Vacation Rental</span>
-            <span class="trade-arrow">⇄</span>
-            <span class="trade-party">🎨 Interior Designer</span>
-          </div>
-          <p class="trade-desc">"Property management services for complete home staging"</p>
-          <span class="trade-value">$8,500 trade value</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Kim's Bio -->
-  <section id="kim" class="bio">
-    <div class="container">
-      <div class="bio-grid">
-        <div class="bio-image">
-          <div class="image-placeholder large">👩‍💼</div>
-        </div>
-        <div class="bio-content">
-          <span class="section-badge">Meet Our Founder</span>
-          <h2 class="section-title">Kimberly Giannini</h2>
-          <p class="bio-subtitle">Chief Trade Director</p>
-          <div class="bio-text">
-            <p>Kimberly launched her barter journey many years ago in San Francisco, turning a modest $150 monthly trade allowance into fine dining, luxury hotel stays, limousine rides, and Bay sunset cruises that hooked her for life.</p>
-            <p>After running a successful executive headhunting firm for nearly two decades, she rediscovered barter's power by trading her Hawaii vacation home for premium property management services—electricians, plumbers, designers, painters, and cleaners—without touching cash.</p>
-            <p>Today, as Chief Trade Director of Island Barter Exchange, she builds a trustworthy, aloha-infused network that lets members access exceptional services, experiences, and connections while preserving cash flow and fostering genuine community.</p>
-          </div>
-          <div class="bio-contact">
-            <a href="tel:6505335891" class="btn btn-primary">📞 650-533-5891</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonial -->
-  <section class="testimonial">
-    <div class="container">
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <span class="testimonial-quote">"</span>
-          <p class="testimonial-text">I turned a $150 monthly trade allowance into fine dining, luxury hotel stays, and limousine rides. Now I help other businesses discover the power of barter.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">KG</div>
-            <div class="author-info">
-              <span class="author-name">Kimberly Giannini</span>
-              <span class="author-title">Chief Trade Director</span>
+  <!-- Kim Section -->
+  <section id="kim" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+          <div class="md:w-1/3">
+            <div class="aspect-[3/4] bg-gray-800 rounded-lg border-4 border-yellow-600 overflow-hidden">
+              <img 
+                src="https://static.wixstatic.com/media/0b2d9e_2a4b2c8e4f4e4f8e8c9d9e2b8c4d5e6f~mv2.jpg" 
+                alt="Kimberly Giannini - Trade Director" 
+                class="w-full h-full object-cover"
+                onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/d4af37?text=Kim'"
+              >
             </div>
           </div>
-        </div>
-        <div class="testimonial-image">
-          <div class="image-placeholder">🌺</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Member Categories -->
-  <section id="members" class="members">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Our Network</span>
-        <h2 class="section-title">Who's Trading?</h2>
-      </div>
-      <div class="categories">
-        <div class="category">
-          <span class="category-icon">🏨</span>
-          <span class="category-name">Hotels & Resorts</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">🍽️</span>
-          <span class="category-name">Restaurants</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">💼</span>
-          <span class="category-name">Professional Services</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">🔧</span>
-          <span class="category-name">Contractors</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">✈️</span>
-          <span class="category-name">Travel & Tourism</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">🏥</span>
-          <span class="category-name">Health & Wellness</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">🎨</span>
-          <span class="category-name">Creative Services</span>
-        </div>
-        <div class="category">
-          <span class="category-icon">📦</span>
-          <span class="category-name">Retail & Products</span>
+          <div class="md:w-2/3">
+            <h2 class="text-3xl font-serif text-yellow-500 mb-2">Our Trade Director</h2>
+            <h3 class="text-2xl font-bold text-white mb-6">Kimberly Giannini</h3>
+            <p class="text-xl text-yellow-600 mb-4">Contact us at 650.533.5891</p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              Kimberly Giannini launched her barter journey many years ago in San Francisco, turning a modest $150 monthly trade allowance into fine dining, luxury hotel stays, limousine rides, and Bay sunset cruises that hooked her for life.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              After running a successful executive headhunting firm for nearly two decades, she rediscovered barter's power by trading her Hawaii vacation home for premium property management services—electricians, plumbers, designers, painters, and cleaners—without touching cash, while also drawing inspiration from experiences and connections in Las Vegas.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              Today, as Chief Trade Director of Island Barter Exchange, Inc., she builds a trustworthy, aloha-infused network that lets members access exceptional services, experiences, and connections while preserving cash flow and fostering genuine community.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Common Questions</span>
-        <h2 class="section-title">Frequently Asked</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-question">Is barter legal?</summary>
-          <div class="faq-answer">
-            <p>Yes! We're officially recognized under the Tax Equity & Fiscal Responsibility Act of 1982. We're classified as a third-party record keeper—just like banks, brokers, and accountants.</p>
+  <section id="faq" class="py-20 bg-black">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-serif text-yellow-500 text-center mb-12">You should know - Frequently Asked Questions</h2>
+      
+      <div class="space-y-4">
+        <details class="group border border-yellow-600/30 rounded-lg bg-gray-900/30 overflow-hidden">
+          <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-semibold text-yellow-500 hover:bg-yellow-600/10 transition">
+            <span>Is Barter legal?</span>
+            <span class="text-2xl group-open:rotate-45 transition">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-300">
+            <p>Yes! We are officially recognized under the "Tax Equity & Fiscal Responsibility Act" of 1982 in which companies like ours are identified as third-party record keepers. This is the same act that covers banks, securities brokers, attorneys, and accountants.</p>
           </div>
         </details>
-        <details class="faq-item">
-          <summary class="faq-question">How are taxes handled?</summary>
-          <div class="faq-answer">
-            <p>Trade dollars are treated exactly like cash for tax purposes. Sales become income, business expenses are deductible, and personal spending is taxable income. We provide all necessary tax documentation at year-end.</p>
+
+        <details class="group border border-yellow-600/30 rounded-lg bg-gray-900/30 overflow-hidden">
+          <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-semibold text-yellow-500 hover:bg-yellow-600/10 transition">
+            <span>What about taxes?</span>
+            <span class="text-2xl group-open:rotate-45 transition">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-300 space-y-2">
+            <p>There are no tax advantages or disadvantages to barter. Trading should be considered a marketing tool, not a tax tool.</p>
+            <p>Trade dollars are treated exactly the same as cash for tax purposes. For example, when your business sells for trade dollars, those dollars become part of your business income in the tax year – just like cash.</p>
+            <p>If your business spends trade dollars on business-related items, those expenses should be offset against income – just like cash. (Exchange fees are tax deductible.)</p>
+            <p>If you or your employees spend trade dollars on personal items, those dollars are part of your taxable income – just like cash.</p>
           </div>
         </details>
-        <details class="faq-item">
-          <summary class="faq-question">What about sales tax?</summary>
-          <div class="faq-answer">
-            <p>The seller collects sales tax on barter transactions just like cash sales. Buyers pay any applicable tax in cash (not trade dollars).</p>
+
+        <details class="group border border-yellow-600/30 rounded-lg bg-gray-900/30 overflow-hidden">
+          <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-semibold text-yellow-500 hover:bg-yellow-600/10 transition">
+            <span>What about sales tax?</span>
+            <span class="text-2xl group-open:rotate-45 transition">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-300">
+            <p>The same rules that apply to cash sales applies to Barter transactions. The seller is responsible to collect and submit taxes on bartered goods, the same as cash sales. Buyers are required to pay any applicable sales tax in cash and not IBE barter dollars.</p>
           </div>
         </details>
-        <details class="faq-item">
-          <summary class="faq-question">Who sets prices?</summary>
-          <div class="faq-answer">
-            <p>You do! Sellers trade at their full, fair retail prices. Our brokers monitor pricing to ensure fair trading policies across the network.</p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-question">How do I get started?</summary>
-          <div class="faq-answer">
-            <p>Simply fill out our signup form or text 650.533.5891 with your company info. Our team will contact you to complete enrollment—usually within 24 hours.</p>
+
+        <details class="group border border-yellow-600/30 rounded-lg bg-gray-900/30 overflow-hidden">
+          <summary class="flex justify-between items-center p-6 cursor-pointer text-lg font-semibold text-yellow-500 hover:bg-yellow-600/10 transition">
+            <span>What does Island Barter Exchange actually do?</span>
+            <span class="text-2xl group-open:rotate-45 transition">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-300">
+            <p>Island Barter Exchange is a third-party record keeper, providing monthly statements to member clients, which reflect their purchases, sales, fees, and current barter balance. We also provide end-of-year tax statements for your accountant.</p>
           </div>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section id="contact" class="cta">
-    <div class="container">
-      <div class="cta-content">
-        <h2 class="cta-title">Ready to Start Trading?</h2>
-        <p class="cta-subtitle">Join 500+ businesses saving cash and growing through barter. No upfront fees—just a small commission on successful trades.</p>
-        <div class="cta-buttons">
-          <a href="tel:6505335891" class="btn btn-primary btn-large">📞 Call 650-533-5891</a>
-          <a href="#" class="btn btn-secondary btn-large">📧 Request Info</a>
-        </div>
-        <p class="cta-note">Or text "JOIN" to 650-533-5891 for instant response</p>
-      </div>
+  <!-- Contact CTA -->
+  <section id="contact" class="py-20 bg-gradient-to-b from-gray-900 to-black border-t-4 border-yellow-600">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-serif text-yellow-500 mb-6">Ready to Start Trading?</h2>
+      <p class="text-xl text-gray-300 mb-8">Contact us today to learn how barter can work for your business.</p>
+      <a href="tel:6505335891" class="inline-block px-8 py-4 bg-yellow-600 text-black text-xl font-bold rounded-lg hover:bg-yellow-500 transition transform hover:scale-105">
+        📞 Call 650-533-5891
+      </a>
+      <p class="mt-6 text-gray-400">Or email: info@islandbarterexchange.com</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="logo-icon">🌺</span>
-          <span class="logo-text">Island Barter</span>
-          <p class="footer-tagline">Trading across Hawaii, Las Vegas, SF Bay Area & New Orleans since 2018.</p>
+  <footer class="py-12 bg-black border-t border-yellow-600/30">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-2 text-yellow-500 text-xl font-bold">
+          <span>🌺</span>
+          <span>Island Barter Exchange</span>
         </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#benefits">Benefits</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        <div class="text-gray-400 text-center md:text-right">
+          <p>&copy; 2024 Island Barter Exchange, Inc.</p>
+          <p class="text-sm mt-1">Licensed under TEFRA 1982 • Third-party record keeper</p>
         </div>
-        <div class="footer-contact">
-          <h4>Contact</h4>
-          <p>📞 <a href="tel:6505335891">650-533-5891</a></p>
-          <p>✉️ <a href="mailto:info@islandbarterexchange.com">info@islandbarterexchange.com</a></p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="X">𝕏</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Island Barter Exchange, Inc. All rights reserved.</p>
-        <p class="footer-legal">Licensed under TEFRA 1982 • Third-party record keeper</p>
       </div>
     </div>
   </footer>
 
-  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
