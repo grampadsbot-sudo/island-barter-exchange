@@ -23,14 +23,10 @@
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-yellow-600/30">
     <div class="container mx-auto px-4 relative">
-      <!-- Member Sign In button - absolute upper right -->
+      <!-- Member Sign In button - desktop only, absolute upper right -->
       <div class="absolute top-2 right-4 z-10">
         <!-- Desktop: Larger button -->
         <a href="#" class="hidden md:inline-block px-4 py-2 bg-yellow-600 text-black font-semibold rounded-lg hover:bg-yellow-500 transition font-cinzel text-xs border-2 border-yellow-400 shadow-lg whitespace-nowrap">
-          Member Sign In
-        </a>
-        <!-- Mobile: Smaller button -->
-        <a href="#" class="md:hidden px-2 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-[10px] border border-yellow-400 whitespace-nowrap">
           Member Sign In
         </a>
       </div>
@@ -43,15 +39,22 @@
       </div>
       
       <!-- Navigation row -->
-      <nav class="flex justify-center items-center pb-1">
+      <nav class="flex justify-center items-center pb-1 relative">
+        <!-- Desktop nav links -->
         <ul class="hidden md:flex items-center gap-6 text-xs">
           <li><a href="#benefits" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">Benefits</a></li>
           <li><a href="#kim" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">Meet Kim</a></li>
           <li><a href="#faq" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">FAQ</a></li>
           <li><a href="#contact" class="px-3 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-xs">Join Now</a></li>
         </ul>
-        <!-- Mobile menu button -->
-        <button class="md:hidden text-yellow-500 text-lg leading-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+        
+        <!-- Mobile: hamburger menu and Member Sign In button side by side -->
+        <div class="md:hidden flex items-center gap-3">
+          <button class="text-yellow-500 text-lg leading-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+          <a href="#" class="px-2 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-[10px] border border-yellow-400">
+            Member Sign In
+          </a>
+        </div>
       </nav>
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden">
