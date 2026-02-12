@@ -24,10 +24,19 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Playfair Display', serif;
   background-color: var(--black-primary);
   color: white;
   line-height: 1.6;
+}
+
+/* Font Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
 }
 
 /* Custom scrollbar */
@@ -48,11 +57,6 @@ body {
   background: var(--gold-primary);
 }
 
-/* Typography */
-h1, h2, h3, .font-serif {
-  font-family: 'Playfair Display', serif;
-}
-
 /* Gold text gradient */
 .text-gold-gradient {
   background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
@@ -67,21 +71,20 @@ h1, h2, h3, .font-serif {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
-/* Video container */
-.video-container {
+/* Voomly embed container */
+.voomly-embed {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
+  height: 100%;
 }
 
-.video-container iframe {
+.voomly-embed iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: none;
 }
 
 /* Card hover effects */
@@ -149,14 +152,11 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* Mobile menu animation */
-@media (max-width: 768px) {
-  .mobile-menu {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .mobile-menu.active {
-    transform: translateX(0);
-  }
+/* Typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+}
+
+p, span, li {
+  font-family: 'Playfair Display', serif;
 }
