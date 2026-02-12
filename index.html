@@ -239,7 +239,7 @@
             <span class="text-2xl group-open:rotate-45 transition">+</span>
           </summary>
           <div class="px-6 pb-6 text-gray-300 font-playfair">
-            <p>Getting started is easy! Simply contact us at 650-533-5891 or email info@islandbarterexchange.com. We'll walk you through the membership process, help you list your products and services, and introduce you to our barter community. Once you're a member, you can start trading right away!</p>
+            <p>Getting started is easy! Simply contact us at 650-533-5891 or email <a href="javascript:void(0)" onclick="openEmailModal()" class="text-yellow-500 hover:text-yellow-400 underline cursor-pointer">info@islandbarterexchange.com</a>. We'll walk you through the membership process, help you list your products and services, and introduce you to our barter community. Once you're a member, you can start trading right away!</p>
           </div>
         </details>
       </div>
@@ -254,9 +254,98 @@
       <a href="tel:6505335891" class="inline-block px-8 py-4 bg-yellow-600 text-black text-xl font-bold rounded-lg hover:bg-yellow-500 transition transform hover:scale-105 font-cinzel">
         Call 650-533-5891
       </a>
-      <p class="mt-6 text-gray-400 font-playfair">Or email: info@islandbarterexchange.com</p>
+      <p class="mt-6 text-gray-400 font-playfair">Or email: <a href="javascript:void(0)" onclick="openEmailModal()" class="text-yellow-500 hover:text-yellow-400 underline cursor-pointer">info@islandbarterexchange.com</a></p>
     </div>
   </section>
+
+  <!-- Email Contact Modal -->
+  <div id="emailModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-gray-900 border-2 border-yellow-600 rounded-lg max-w-md w-full p-6 relative shadow-2xl">
+      <!-- Close button -->
+      <button onclick="closeEmailModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl">&times;</button>
+      
+      <h3 class="text-2xl font-cinzel text-yellow-500 mb-2 text-center">Contact Us</h3>
+      <p class="text-gray-400 text-sm mb-6 text-center font-playfair">Send us a message and we'll get back to you shortly.</p>
+      
+      <form id="contactForm" onsubmit="handleEmailSubmit(event)">
+        <div class="mb-4">
+          <label class="block text-yellow-500 font-cinzel text-sm mb-2">Your Name</label>
+          <input type="text" name="name" required class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white font-playfair focus:outline-none focus:border-yellow-500">
+        </div>
+        
+        <div class="mb-4">
+          <label class="block text-yellow-500 font-cinzel text-sm mb-2">Your Email</label>
+          <input type="email" name="email" required class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white font-playfair focus:outline-none focus:border-yellow-500">
+        </div>
+        
+        <div class="mb-4">
+          <label class="block text-yellow-500 font-cinzel text-sm mb-2">Phone (optional)</label>
+          <input type="tel" name="phone" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white font-playfair focus:outline-none focus:border-yellow-500">
+        </div>
+        
+        <div class="mb-6">
+          <label class="block text-yellow-500 font-cinzel text-sm mb-2">Message</label>
+          <textarea name="message" rows="4" required class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white font-playfair focus:outline-none focus:border-yellow-500 resize-none"></textarea>
+        </div>
+        
+        <div class="flex gap-3">
+          <button type="button" onclick="closeEmailModal()" class="flex-1 px-4 py-2 border border-yellow-600 text-yellow-500 rounded hover:bg-yellow-600/20 transition font-cinzel">
+            Cancel
+          </button>
+          <button type="submit" class="flex-1 px-4 py-2 bg-yellow-600 text-black font-bold rounded hover:bg-yellow-500 transition font-cinzel">
+            Send Message
+          </button>
+        </div>
+      </form>
+      
+      <!-- Success message (hidden by default) -->
+      <div id="successMessage" class="hidden text-center py-8">
+        <div class="text-5xl mb-4">✓</div>
+        <h4 class="text-xl font-cinzel text-yellow-500 mb-2">Message Sent!</h4>
+        <p class="text-gray-400 font-playfair mb-4">Thank you for contacting us. We'll be in touch soon.</p>
+        <button onclick="closeEmailModal()" class="px-6 py-2 bg-yellow-600 text-black font-bold rounded hover:bg-yellow-500 transition font-cinzel">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openEmailModal() {
+      document.getElementById('emailModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeEmailModal() {
+      document.getElementById('emailModal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+      // Reset form
+      document.getElementById('contactForm').reset();
+      document.getElementById('contactForm').classList.remove('hidden');
+      document.getElementById('successMessage').classList.add('hidden');
+    }
+    
+    function handleEmailSubmit(e) {
+      e.preventDefault();
+      // Here you would normally send the form data to a server
+      // For now, we'll just show the success message
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('successMessage').classList.remove('hidden');
+      
+      // Optionally open mailto with form data
+      const formData = new FormData(e.target);
+      const subject = 'Contact Form Submission from Island Barter Exchange';
+      const body = `Name: ${formData.get('name')}%0D%0AEmail: ${formData.get('email')}%0D%0APhone: ${formData.get('phone') || 'Not provided'}%0D%0A%0D%0AMessage:%0D%0A${formData.get('message')}`;
+      window.open(`mailto:info@islandbarterexchange.com?subject=${subject}&body=${body}`);
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('emailModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeEmailModal();
+      }
+    });
+  </script>
 
   <!-- Footer -->
   <footer class="py-6 bg-black border-t border-yellow-600/30">
