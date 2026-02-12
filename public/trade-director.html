@@ -17,6 +17,8 @@
     body { font-family: 'Playfair Display', serif; }
     .font-cinzel { font-family: 'Cinzel', serif; }
     .font-playfair { font-family: 'Playfair Display', serif; }
+    .bg-gold { background-color: #C9A961; }
+    .bg-gold-light { background-color: #D4B896; }
   </style>
 </head>
 <body class="bg-black text-white">
@@ -48,47 +50,65 @@
     </div>
   </header>
 
+  <!-- Back Button -->
+  <div class="fixed top-28 left-4 z-40">
+    <a href="/" class="inline-flex items-center text-yellow-500 hover:text-yellow-400 font-cinzel text-sm bg-black/80 px-3 py-2 rounded">
+      <span class="mr-1">←</span> Back
+    </a>
+  </div>
+
   <!-- Kim Full Bio Section -->
-  <section class="pt-52 md:pt-64 bg-gradient-to-b from-black to-gray-900 min-h-screen">
-    <div class="container mx-auto px-6 py-10">
-      <div class="max-w-4xl mx-auto">
-        <!-- Back Link -->
-        <a href="/" class="text-yellow-500 hover:text-yellow-400 mb-8 inline-block font-cinzel">← Back to Home</a>
+  <section class="pt-52 md:pt-64 pb-10" style="background: linear-gradient(to bottom, #B8956B, #C9A961, #D4B076);">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
         
         <!-- Header -->
-        <div class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl font-cinzel text-yellow-500 mb-4">Our Trade Director</h1>
-          <h2 class="text-2xl md:text-3xl font-cinzel font-bold text-white">Kimberly Giannini</h2>
-          <p class="text-xl text-yellow-600 mt-4 font-cinzel">Contact us at 650.533.5891</p>
+        <div class="text-center mb-10">
+          <h1 class="text-3xl md:text-4xl font-cinzel text-white mb-2 drop-shadow-lg">Our Trade Director</h1>
+          <h2 class="text-xl md:text-2xl font-cinzel font-bold text-white mb-4 drop-shadow-lg">Kimberly Giannini</h2>
+          <p class="text-lg text-white/90 font-cinzel drop-shadow">Contact us at 650.533.5891</p>
         </div>
 
         <!-- Main Image -->
-        <div class="aspect-square max-w-md mx-auto mb-12 rounded-full border-4 border-yellow-600 overflow-hidden bg-gray-800">
+        <div class="aspect-square max-w-sm mx-auto mb-10 rounded-full border-4 border-yellow-700 overflow-hidden shadow-2xl">
           <img src="/images/kim.jpg" alt="Kimberly Giannini - Trade Director" class="w-full h-full object-cover">
         </div>
 
         <!-- Bio Content -->
-        <div class="space-y-6 text-lg text-gray-300 leading-relaxed font-playfair">
-          <p>
-            Kimberly Giannini launched her barter journey many years ago in San Francisco, turning a modest $150 monthly trade allowance into fine dining, luxury hotel stays, limousine rides, and Bay sunset cruises that hooked her for life.
-          </p>
-          <p>
-            After running a successful executive headhunting firm for nearly two decades, she rediscovered barter's power by trading her Hawaii vacation home for premium property management services—electricians, plumbers, designers, painters, and cleaners—without touching cash, while also drawing inspiration from experiences and connections in Las Vegas.
-          </p>
-          <p>
-            Today, as Chief Trade Director of Island Barter Exchange, Inc., she builds a trustworthy, aloha-infused network that lets members access exceptional services, experiences, and connections while preserving cash flow and fostering genuine community.
+        <div class="space-y-6 text-base text-gray-900 leading-relaxed font-playfair">
+          <p class="font-semibold text-lg">
+            Kim Giannini-Davidson serves as Chief Trade Director of Island Barter Exchange, Inc., a premier barter community rooted in integrity, aloha spirit, and transformative opportunities for businesses and individuals across the islands and beyond.
           </p>
           
-          <!-- Additional bio content will go here -->
-          <div id="extended-bio">
-            <!-- User will provide more content -->
-          </div>
+          <p>
+            Her journey into the world of barter began over 40 years ago in the vibrant streets of San Francisco, where she joined a boutique barter company as assistant to the CEO. With a modest salary supplemented by just $150 a month in trade dollars, she unlocked a world of luxury and convenience—dining at top restaurants, staying in elegant hotels, enjoying limo rides, and gifting family and friends unforgettable experiences like spa retreats and sunset cruises on the San Francisco Bay. That first taste of barter's magic hooked her for life.
+          </p>
+          
+          <p>
+            Years later, after leading a successful executive headhunting firm for nearly two decades—following a tempting offer to relocate to Hong Kong with a banking chairman and his family—she rediscovered barter's power when reconnecting with her original mentor. Adding her family's vacation home in Hawaii to a trade portfolio opened doors to exceptional property management: skilled electricians, plumbers, designers, painters, house cleaners, and more—all traded seamlessly without draining cash reserves. The efficiency and joy it brought to managing multiple properties proved irresistible.
+          </p>
+          
+          <p>
+            Inspired by countless guests, clients, and associates who expressed a desire for a fresh, values-driven barter network, Kim founded Island Barter Exchange, Inc.—a modern exchange dedicated to elevating lives through fair, trustworthy trade practices infused with genuine Hawaiian aloha.
+          </p>
+          
+          <p class="font-semibold italic text-lg text-center py-4 border-y-2 border-yellow-800/30">
+            "To create something exceptional, your mindset must be relentlessly focused on the smallest detail."
+          </p>
+          
+          <p>
+            Much like her approach to curating upscale homes as owner and designer—where she focuses on the perfect match for exceptional living, lifestyles, and ideal tenants who treat each property as their own—Kim brings that same meticulous attention to barter.
+          </p>
+          
+          <p class="font-semibold text-lg">
+            At Island Barter Exchange, she invites you to discover the same life-enhancing freedom: stretch your resources, access premium services and experiences, build meaningful connections, and thrive in a community built on trust and mutual success. Join us!
+          </p>
         </div>
 
-        <!-- Call to Action -->
+        <!-- Back Link -->
         <div class="mt-12 text-center">
-          <a href="/" class="inline-block px-8 py-4 bg-yellow-600 text-black text-xl font-bold rounded-lg hover:bg-yellow-500 transition transform hover:scale-105 font-cinzel">
-            Back to Home
+          <a href="/" class="inline-block px-8 py-3 bg-yellow-800 text-white text-lg font-bold rounded-lg hover:bg-yellow-900 transition shadow-lg font-cinzel">
+            ← Back to Home
           </a>
         </div>
       </div>
