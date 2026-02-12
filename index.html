@@ -48,16 +48,16 @@
           <li><a href="#contact" class="px-3 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-xs">Join Now</a></li>
         </ul>
         
-        <!-- Mobile: hamburger menu centered, Member Sign In button on right -->
-        <div class="md:hidden flex justify-between items-center w-full px-4">
-          <!-- Spacer for left side to balance -->
-          <div class="w-24"></div>
+        <!-- Mobile: hamburger menu centered, Member Sign In button all the way right -->
+        <div class="md:hidden flex items-center w-full px-2">
+          <!-- Hamburger -->
+          <button class="text-yellow-500 text-lg leading-none flex-shrink-0" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
           
-          <!-- Hamburger centered -->
-          <button class="text-yellow-500 text-lg leading-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+          <!-- Center spacer -->
+          <div class="flex-1"></div>
           
-          <!-- Member Sign In button on right -->
-          <a href="#" class="px-2 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-[10px] border border-yellow-400 whitespace-nowrap">
+          <!-- Member Sign In button pushed to right edge -->
+          <a href="#" class="px-2 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-[10px] border border-yellow-400 whitespace-nowrap flex-shrink-0">
             Member Sign In
           </a>
         </div>
