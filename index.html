@@ -23,12 +23,29 @@
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-yellow-600/30">
     <div class="container mx-auto px-4">
-      <!-- Logo centered - compact -->
-      <div class="flex justify-center items-center pt-1">
+      <!-- Top row: Logo centered with Member Sign In button on right -->
+      <div class="flex justify-between items-start pt-1 relative">
+        <!-- Spacer for balance on left -->
+        <div class="w-24 md:w-32"></div>
+        
+        <!-- Logo centered -->
         <a href="#" class="flex items-center">
           <img src="/images/logoLarge.png" alt="Island Barter Exchange" class="h-48 md:h-64 w-auto">
         </a>
+        
+        <!-- Member Sign In button - upper right -->
+        <div class="w-24 md:w-32 flex justify-end pt-2">
+          <!-- Desktop: Larger button -->
+          <a href="#" class="hidden md:inline-block px-4 py-2 bg-yellow-600 text-black font-semibold rounded-lg hover:bg-yellow-500 transition font-cinzel text-xs border-2 border-yellow-400 shadow-lg">
+            Member Sign In
+          </a>
+          <!-- Mobile: Smaller button -->
+          <a href="#" class="md:hidden px-2 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-[10px] border border-yellow-400">
+            Sign In
+          </a>
+        </div>
       </div>
+      
       <!-- Navigation row -->
       <nav class="flex justify-center items-center pb-1">
         <ul class="hidden md:flex items-center gap-6 text-xs">
