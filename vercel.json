@@ -1,6 +1,28 @@
 {
   "version": 2,
   "public": true,
+  "routes": [
+    {
+      "src": "/privacy-policy.html",
+      "dest": "/privacy-policy.html"
+    },
+    {
+      "src": "/terms-of-use.html",
+      "dest": "/terms-of-use.html"
+    },
+    {
+      "src": "/refund-policy.html",
+      "dest": "/refund-policy.html"
+    },
+    {
+      "src": "/how-it-works.html",
+      "dest": "/how-it-works.html"
+    },
+    {
+      "src": "/trade-director.html",
+      "dest": "/trade-director.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/:path*",
