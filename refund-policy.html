@@ -12,7 +12,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-yellow-600/30">
     <div class="container mx-auto px-4 relative">
       <div class="absolute top-2 right-4 z-10">
-        <a href="#" class="hidden md:inline-block px-4 py-2 bg-yellow-600 text-black font-semibold rounded-lg hover:bg-yellow-500 transition font-cinzel text-xs border-2 border-yellow-400">Member Sign In</a>
+        <a href="https://members.islandbarterexchange.com" class="hidden md:inline-block px-4 py-2 bg-yellow-600 text-black font-semibold rounded-lg hover:bg-yellow-500 transition font-cinzel text-xs border-2 border-yellow-400">Member Sign In</a>
       </div>
       <div class="flex justify-center items-center pt-1">
         <a href="index.html"><img src="/images/logoLarge.png" alt="Island Barter Exchange" class="h-48 md:h-64 w-auto"></a>
@@ -25,7 +25,29 @@
           <li><a href="index.html#faq" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">FAQ</a></li>
           <li><a href="index.html#contact" class="px-3 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-xs">Join Now</a></li>
         </ul>
+        
+        <!-- Mobile: hamburger menu centered, Member Sign In button at right edge -->
+        <div class="md:hidden relative w-full h-6 -mr-2">
+          <!-- Hamburger centered -->
+          <button class="absolute left-1/2 transform -translate-x-1/2 text-yellow-500 text-lg leading-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">☰</button>
+          
+          <!-- Member Sign In button at right edge -->
+          <a href="https://members.islandbarterexchange.com" class="absolute right-0 px-2 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel text-[10px] border border-yellow-400 whitespace-nowrap">
+            Member Sign In
+          </a>
+        </div>
       </nav>
+      
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="flex flex-col items-center gap-2 text-xs pb-2">
+          <li><a href="index.html#benefits" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">Benefits</a></li>
+          <li><a href="index.html#kim" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">Meet Kim</a></li>
+          <li><a href="how-it-works.html" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-yellow-500 font-cinzel">How It Works</a></li>
+          <li><a href="index.html#faq" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-300 hover:text-yellow-500 transition font-cinzel">FAQ</a></li>
+          <li><a href="index.html#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="px-3 py-1 bg-yellow-600 text-black font-semibold rounded hover:bg-yellow-500 transition font-cinzel">Join Now</a></li>
+        </ul>
+      </div>
     </div>
   </header>
   <main class="pt-64 pb-16">
@@ -40,4 +62,73 @@
         
         <h2 class="text-2xl font-cinzel text-yellow-500 mt-8">2. Exceptions</h2>
         <p>While we maintain a no-refund policy, we understand that certain exceptional circumstances may arise. Refunds may be considered at the sole discretion of Island Barter Exchange under the following conditions:</p>
-        <ul class="list-disc pl-6 space-y
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Technical errors or system malfunctions that result in incorrect charges</li>
+          <li>Duplicate charges or billing errors</li>
+          <li>Failure to provide services as contracted due to Island Barter Exchange's inability to perform</li>
+          <li>Special circumstances as determined by management on a case-by-case basis</li>
+        </ul>
+        
+        <h2 class="text-2xl font-cinzel text-yellow-500 mt-8">3. Request Process</h2>
+        <p>To request a refund consideration, members must submit a written request to Island Barter Exchange within 30 days of the transaction in question. The request should include:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Member account information</li>
+          <li>Transaction details and date</li>
+          <li>Reason for refund request</li>
+          <li>Any supporting documentation</li>
+        </ul>
+        
+        <h2 class="text-2xl font-cinzel text-yellow-500 mt-8">4. Processing Time</h2>
+        <p>Refund requests will be reviewed within 10 business days of receipt. If approved, refunds will be processed to the original payment method or applied as account credit, at the discretion of Island Barter Exchange.</p>
+        
+        <h2 class="text-2xl font-cinzel text-yellow-500 mt-8">5. Non-Refundable Items</h2>
+        <p>The following are generally not eligible for refunds:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Membership fees already utilized</li>
+          <li>Transaction fees for completed trades</li>
+          <li>Cash balance account funds (except in cases of billing errors)</li>
+          <li>Promotional or discounted membership fees</li>
+        </ul>
+        
+        <h2 class="text-2xl font-cinzel text-yellow-500 mt-8">6. Contact Information</h2>
+        <p>For questions about our refund policy or to submit a refund request, please contact us at:</p>
+        <p class="mt-2">Email: info@islandbarterexchange.com<br>
+        Phone: 650.533.5891<br>
+        Address: 35 E Horizon Ridge Pkwy, Ste 110 #3167, Henderson, NV 89002</p>
+        
+        <h2 class="text-2xl font-cinzel text-yellow-500 mt-8">7. Policy Changes</h2>
+        <p>Island Barter Exchange reserves the right to modify this refund policy at any time. Changes will be effective immediately upon posting to our website. Members are encouraged to review this policy periodically.</p>
+        
+        <p class="mt-8 text-sm text-gray-400"><em>Last Updated: December 2024</em></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-black border-t border-yellow-600/30">
+  <div class="container mx-auto px-6">
+  <div class="flex flex-col items-center gap-4">
+  <div class="flex items-center gap-2 text-yellow-500 text-xl font-bold">
+  <img src="/images/logoLarge.png" alt="Island Barter Exchange - Trade Smart, Trade Bold" class="h-20 w-auto">
+  </div>
+  <div class="text-gray-400 text-center font-playfair">
+  <p>35 E Horizon Ridge Pkwy, Ste 110 #3167, Henderson, NV 89002</p>
+  <p class="mt-1">Email: info@islandbarterexchange.com | Phone: 650.533.5891</p>
+  </div>
+  <div class="flex flex-wrap justify-center gap-4 text-sm">
+  <a href="privacy-policy.html" class="text-gray-400 hover:text-yellow-500 transition font-playfair">Privacy & Data Policy</a>
+  <span class="text-gray-600">|</span>
+  <a href="terms-of-use.html" class="text-gray-400 hover:text-yellow-500 transition font-playfair">Website Terms of Usage</a>
+  <span class="text-gray-600">|</span>
+  <a href="refund-policy.html" class="text-yellow-500 font-bold font-playfair">Refund Policy</a>
+  </div>
+  <div class="text-gray-400 text-center font-playfair text-sm">
+  <p>Trade Smart, Trade Bold</p>
+  <p class="mt-1">Copyright 2026 IBE Inc.</p>
+  </div>
+  </div>
+  </div>
+  </footer>
+
+</body>
+</html>
