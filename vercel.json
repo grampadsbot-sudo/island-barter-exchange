@@ -1,6 +1,20 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "routes": [
+    {
+      "src": "/member-review",
+      "dest": "/member-review.html"
+    },
+    {
+      "src": "/member-review/",
+      "dest": "/member-review.html"
+    },
+    {
+      "src": "/member-review.html",
+      "dest": "/member-review.html"
+    },
     {
       "src": "/privacy-policy.html",
       "dest": "/privacy-policy.html"
@@ -50,6 +64,24 @@
         {
           "key": "X-Frame-Options",
           "value": "DENY"
+        }
+      ]
+    },
+    {
+      "source": "/member-review",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/member-review.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
         }
       ]
     }
