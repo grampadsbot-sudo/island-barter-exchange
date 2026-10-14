@@ -3,6 +3,10 @@ import { resolve } from 'node:path'
 
 const ENDPOINT_TOKEN = '__VITE_SURVEY_ENDPOINT_JSON__'
 
+// Public Apps Script web app. Not a secret. A non-empty VITE_SURVEY_ENDPOINT replaces it.
+const DEFAULT_SURVEY_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbzAVmWZb-Sp83Ma5eocgnXR-ICsZXw5tvcfSuRTofAPRNzD1y9UewE9_PENy127k1KZdg/exec'
+
 function surveyEndpointPlugin(endpoint) {
   const literal = JSON.stringify(endpoint).replace(/</g, '\\u003c')
   return {
@@ -38,7 +42,8 @@ function memberReviewRewrite() {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
-  const endpoint = (env.VITE_SURVEY_ENDPOINT || '').trim()
+  const fromEnv = (env.VITE_SURVEY_ENDPOINT || '').trim()
+  const endpoint = fromEnv || DEFAULT_SURVEY_ENDPOINT
   return {
     appType: 'mpa',
     plugins: [surveyEndpointPlugin(endpoint), memberReviewRewrite()],

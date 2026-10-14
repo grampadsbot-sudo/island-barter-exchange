@@ -2,7 +2,7 @@
 
 Each member gets their own link. Kim texts that link. The page at `/member-review` stays generic: it does not greet anyone and it does not show or ask for a name or business. The token in the link is how a submission is written onto that member's row.
 
-The site repo is public. Do not commit the web app URL or any member token, and do not put tokens in Vercel. There is no shared `SURVEY_TOKEN`.
+The site repo is public. The web app URL is not a secret: `vite.config.js` commits it as `DEFAULT_SURVEY_ENDPOINT`, and a non-empty `VITE_SURVEY_ENDPOINT` overrides that default at build time. Do not commit member tokens, and do not put tokens in Vercel. There is no shared `SURVEY_TOKEN`.
 
 ## 1. Create the sheet
 
@@ -32,25 +32,13 @@ After you change `Code.gs` later: **Deploy → Manage deployments → pencil ico
 
 ## 4. Point the site at the web app
 
-The page does not contain the URL. Vite inlines `VITE_SURVEY_ENDPOINT` when the site is built.
+`vercel.json` sets the build command to `npm run build` and the output directory to `dist`. Vite inlines the survey URL into `/member-review` at build time. The default is `DEFAULT_SURVEY_ENDPOINT` in `vite.config.js`, which is the deployed web app:
 
-1. In the Vercel project, open **Settings → Environment Variables**.
-2. Add `VITE_SURVEY_ENDPOINT` for Production (and Preview, if you want the survey on preview deploys).
-3. Set the value to the Web app URL you copied. Nothing else: no quotes and no member token.
-4. Set the Vercel project **Build Command** to `npm run build` and **Output Directory** to `dist`. The URL is baked in at build time. Saving the variable does nothing until the next build.
-5. Redeploy the site.
+`https://script.google.com/macros/s/AKfycbzAVmWZb-Sp83Ma5eocgnXR-ICsZXw5tvcfSuRTofAPRNzD1y9UewE9_PENy127k1KZdg/exec`
 
-Locally:
+Leave `VITE_SURVEY_ENDPOINT` unset to use that URL. Set it only when a build should call a different web app. An empty value does not override the default. The URL is baked in at build time, so changing it requires a new build.
 
-```bash
-cp .env.example .env
-```
-
-Put the same Web app URL in `.env` as `VITE_SURVEY_ENDPOINT=`. `.env` is gitignored. Then:
-
-```bash
-npm run dev
-```
+Locally, `npm run dev` and `npm run build` use the same default. To try another URL, copy `.env.example` to `.env` and set `VITE_SURVEY_ENDPOINT` there. `.env` is gitignored.
 
 ## 5. Add members and generate links
 
