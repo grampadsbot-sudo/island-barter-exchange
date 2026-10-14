@@ -30,11 +30,12 @@ git push -u origin main
 1. Go to [vercel.com/new](https://vercel.com/new)
 2. Click "Import Git Repository"
 3. Select `island-barter-exchange` from the list
-4. Vercel auto-detects settings:
-   - Framework: **Other** (static HTML)
+4. Vercel auto-detects Vite. Use these settings so the member review page can receive its endpoint at build time:
+   - Framework: **Vite**
    - Root Directory: `./`
-   - Build Command: (leave empty)
-   - Output Directory: `./`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Environment variable: `VITE_SURVEY_ENDPOINT` = the Apps Script web app URL (see [apps-script/README.md](apps-script/README.md)). Do not put the invite token in Vercel.
 5. Click "Deploy"
 
 ### Step 4: Done! 🎉
