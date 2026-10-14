@@ -42,27 +42,17 @@
     .font-playfair { font-family: 'Playfair Display', serif; }
     :focus-visible { outline: 2px solid #eab308; outline-offset: 2px; }
     #review-form label { cursor: pointer; }
-    #review-form fieldset { min-inline-size: 0; }
-    #review-form fieldset.survey-card {
-      display: flow-root;
-      border: 2px solid rgba(202, 138, 4, 0.5);
-      border-radius: 0.5rem;
-      background-color: rgba(17, 24, 39, 0.5);
-      padding: 1rem;
-    }
-    #review-form fieldset.survey-card > legend {
-      float: left;
-      width: 100%;
-      padding: 0;
-    }
-    #review-form fieldset fieldset {
+    #review-form fieldset {
       border: 0;
       margin: 0;
       padding: 0;
-      background: transparent;
+      min-inline-size: 0;
+      width: 100%;
     }
-    @media (min-width: 640px) {
-      #review-form fieldset.survey-card { padding: 1.5rem; }
+    #review-form legend {
+      display: block;
+      width: 100%;
+      padding: 0;
     }
     html:not([data-survey="invite"]) #invite-gate,
     html:not([data-survey="unavailable"]) #unavailable,
@@ -147,13 +137,14 @@
         </div>
 
         <form id="review-form" method="post" action="#" novalidate>
-          <p class="text-gray-300 font-playfair text-sm mb-6">Questions marked with <span class="text-yellow-500" aria-hidden="true">*</span><span class="sr-only">an asterisk</span> are required. This takes about 2 minutes.</p>
+          <p class="text-gray-300 font-playfair text-sm mb-6">Questions marked with <span class="text-yellow-500" aria-hidden="true">*</span><span class="sr-only">an asterisk</span> are required.</p>
 
           <div id="form-error" class="hidden mb-6 rounded-lg border border-red-400 bg-black p-4 text-red-100 font-playfair scroll-mt-56 md:scroll-mt-80" role="alert" tabindex="-1"></div>
           <div id="submit-status" class="sr-only" role="status" aria-live="polite"></div>
 
           <div class="space-y-6">
-            <fieldset class="survey-card" aria-describedby="recommend-hint">
+            <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
+            <fieldset aria-describedby="recommend-hint">
               <legend class="font-cinzel text-yellow-500 text-lg mb-4">
                 <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">1</span>
                 How likely are you to recommend IBE to a friend or colleague?
@@ -208,6 +199,7 @@
                 </label>
               </div>
             </fieldset>
+            </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
               <label for="reasons" class="block font-cinzel text-yellow-500 text-lg mb-4">
@@ -216,10 +208,11 @@
                 <span class="text-yellow-500" aria-hidden="true">*</span>
                 <span class="sr-only">required</span>
               </label>
-              <textarea id="reasons" name="reasons" required maxlength="2000" rows="5" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
+              <textarea id="reasons" name="reasons" required maxlength="2000" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
             </div>
 
-            <fieldset class="survey-card">
+            <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
+            <fieldset>
               <legend class="font-cinzel text-yellow-500 text-lg">
                 <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">3</span>
                 Rate each area
@@ -283,6 +276,7 @@
                 </div>
               </fieldset>
             </fieldset>
+            </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
               <label for="enjoy" class="block font-cinzel text-yellow-500 text-lg mb-4">
@@ -290,7 +284,7 @@
                 What do you enjoy most about being part of IBE?
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </label>
-              <textarea id="enjoy" name="enjoy" maxlength="2000" rows="4" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
+              <textarea id="enjoy" name="enjoy" maxlength="2000" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
             </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
@@ -299,10 +293,11 @@
                 What would you like to see added or improved?
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </label>
-              <textarea id="improve" name="improve" maxlength="2000" rows="4" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
+              <textarea id="improve" name="improve" maxlength="2000" rows="4" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
             </div>
 
-            <fieldset class="survey-card">
+            <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
+            <fieldset>
               <legend class="font-cinzel text-yellow-500 text-lg mb-4">
                 <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">6</span>
                 Your name and business name
@@ -311,14 +306,15 @@
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label for="member-name" class="block text-yellow-500 font-cinzel text-sm mb-2">Your name</label>
-                  <input id="member-name" name="name" type="text" autocomplete="name" maxlength="200" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
+                  <input id="member-name" name="name" type="text" autocomplete="name" maxlength="200" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
                 </div>
                 <div>
                   <label for="business-name" class="block text-yellow-500 font-cinzel text-sm mb-2">Business name</label>
-                  <input id="business-name" name="business" type="text" autocomplete="organization" maxlength="200" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
+                  <input id="business-name" name="business" type="text" autocomplete="organization" maxlength="200" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
                 </div>
               </div>
             </fieldset>
+            </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
               <label for="referral" class="block font-cinzel text-yellow-500 text-lg mb-4">
@@ -326,7 +322,7 @@
                 A business owner you think would be a great fit for IBE
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </label>
-              <textarea id="referral" name="referral" maxlength="2000" rows="3" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
+              <textarea id="referral" name="referral" maxlength="2000" rows="3" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
             </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
@@ -335,7 +331,7 @@
                 A local charity you'd like IBE to support
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </label>
-              <textarea id="charity" name="charity" maxlength="2000" rows="3" class="w-full px-4 py-2 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
+              <textarea id="charity" name="charity" maxlength="2000" rows="3" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500"></textarea>
             </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
