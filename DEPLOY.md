@@ -35,7 +35,7 @@ git push -u origin main
    - Root Directory: `./`
    - Build Command: `npm run build`
    - Output Directory: `dist`
-   - Environment variable: `VITE_SURVEY_ENDPOINT` = the Apps Script web app URL (see [apps-script/README.md](apps-script/README.md)). Do not put the invite token in Vercel.
+   - Environment variable: `VITE_SURVEY_ENDPOINT` = the Apps Script web app URL (see [apps-script/README.md](apps-script/README.md)). Do not put member tokens in Vercel.
 5. Click "Deploy"
 
 ### Step 4: Done! 🎉

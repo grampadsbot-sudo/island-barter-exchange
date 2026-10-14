@@ -26,9 +26,9 @@
       } catch (e) {
         token = "";
       }
-      window.__IBE_SURVEY_TOKEN__ = token;
+      window.__IBE_INVITE_TOKEN__ = token;
       var state = "invite";
-      if (token && endpoint.indexOf("https://") === 0) state = "ready";
+      if (token && endpoint.indexOf("https://") === 0) state = "checking";
       else if (token) state = "unavailable";
       document.documentElement.setAttribute("data-survey", state);
     })();
@@ -55,7 +55,9 @@
       padding: 0;
     }
     html:not([data-survey="invite"]) #invite-gate,
+    html:not([data-survey="checking"]) #checking,
     html:not([data-survey="unavailable"]) #unavailable,
+    html:not([data-survey="used"]) #already-used,
     html:not([data-survey="ready"]) #review-form,
     html:not([data-survey="done"]) #success { display: none; }
   </style>
@@ -122,6 +124,14 @@
           </div>
         </noscript>
 
+        <div id="checking" class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-6" role="status" aria-live="polite">
+          <p class="text-gray-300 font-playfair">Checking your invitation link…</p>
+        </div>
+
+        <div id="already-used" class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-6">
+          <h2 id="already-used-title" tabindex="-1" class="text-2xl md:text-3xl font-cinzel text-yellow-500 scroll-mt-56 md:scroll-mt-80">This survey has already been completed. Thank you!</h2>
+        </div>
+
         <div id="invite-gate" class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-6">
           <h2 class="text-2xl md:text-3xl font-cinzel text-yellow-500 mb-4">Please use your invitation link</h2>
           <p class="text-gray-300 font-playfair leading-relaxed">This review is private. Open the personal link you received from Island Barter Exchange to share your thoughts.</p>
@@ -144,61 +154,15 @@
 
           <div class="space-y-6">
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
-            <fieldset aria-describedby="recommend-hint">
-              <legend class="font-cinzel text-yellow-500 text-lg mb-4">
+              <label for="recommend" class="block font-cinzel text-yellow-500 text-lg mb-4">
                 <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">1</span>
                 How likely are you to recommend IBE to a friend or colleague?
                 <span class="text-yellow-500" aria-hidden="true">*</span>
                 <span class="sr-only">required</span>
-              </legend>
-              <p id="recommend-hint" class="text-gray-300 font-playfair text-sm mb-4">0 is not at all likely. 10 is extremely likely.</p>
-              <div class="grid grid-cols-6 gap-2 sm:grid-cols-11">
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="0" required aria-label="0, not at all likely">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">0</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="1" aria-label="1 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">1</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="2" aria-label="2 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">2</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="3" aria-label="3 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">3</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="4" aria-label="4 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">4</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="5" aria-label="5 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">5</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="6" aria-label="6 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">6</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="7" aria-label="7 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">7</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="8" aria-label="8 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">8</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="9" aria-label="9 out of 10">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">9</span>
-                </label>
-                <label class="block">
-                  <input class="peer sr-only" type="radio" name="recommend" value="10" aria-label="10, extremely likely">
-                  <span class="flex h-11 items-center justify-center rounded border border-yellow-600/50 bg-gray-800 font-cinzel text-yellow-500 peer-checked:border-yellow-500 peer-checked:bg-yellow-600 peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-yellow-400">10</span>
-                </label>
-              </div>
-            </fieldset>
+              </label>
+              <p id="recommend-hint" class="text-gray-300 font-playfair text-sm mb-4">0 = not at all likely, 10 = extremely likely</p>
+              <input id="recommend" name="recommend" type="number" inputmode="numeric" min="0" max="10" step="1" required autocomplete="off" aria-describedby="recommend-hint recommend-error" class="w-full max-w-[8rem] px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
+              <p id="recommend-error" class="hidden mt-3 text-red-200 font-playfair" role="alert"></p>
             </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
@@ -297,28 +261,8 @@
             </div>
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
-            <fieldset>
-              <legend class="font-cinzel text-yellow-500 text-lg mb-4">
-                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">6</span>
-                Your name and business name
-                <span class="text-gray-400 font-playfair text-sm">(optional)</span>
-              </legend>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="member-name" class="block text-yellow-500 font-cinzel text-sm mb-2">Your name</label>
-                  <input id="member-name" name="name" type="text" autocomplete="name" maxlength="200" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
-                </div>
-                <div>
-                  <label for="business-name" class="block text-yellow-500 font-cinzel text-sm mb-2">Business name</label>
-                  <input id="business-name" name="business" type="text" autocomplete="organization" maxlength="200" class="w-full px-4 py-3 bg-gray-800 border border-yellow-600/50 rounded text-white text-base font-playfair focus:outline-none focus:border-yellow-500">
-                </div>
-              </div>
-            </fieldset>
-            </div>
-
-            <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
               <label for="referral" class="block font-cinzel text-yellow-500 text-lg mb-4">
-                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">7</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">6</span>
                 A business owner you think would be a great fit for IBE
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </label>
@@ -327,7 +271,7 @@
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
               <label for="charity" class="block font-cinzel text-yellow-500 text-lg mb-4">
-                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">8</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">7</span>
                 A local charity you'd like IBE to support
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </label>
@@ -336,7 +280,7 @@
 
             <div class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-4 sm:p-6">
               <div class="font-cinzel text-yellow-500 text-lg mb-4" id="share-label">
-                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">9</span>
+                <span class="inline-flex items-center justify-center w-7 h-7 mr-2 bg-yellow-600 text-black rounded-full text-sm align-middle" aria-hidden="true">8</span>
                 <span class="text-gray-400 font-playfair text-sm">(optional)</span>
               </div>
               <label for="share-comments" class="flex items-start gap-3 cursor-pointer">
@@ -402,14 +346,13 @@
       }
 
       var form = document.getElementById("review-form");
-      if (!form || document.documentElement.getAttribute("data-survey") !== "ready") return;
-
       var endpoint = window.__IBE_SURVEY_ENDPOINT__ || "";
-      var token = window.__IBE_SURVEY_TOKEN__ || "";
+      var token = window.__IBE_INVITE_TOKEN__ || "";
       var errorBox = document.getElementById("form-error");
       var statusBox = document.getElementById("submit-status");
       var submitBtn = document.getElementById("submit-review");
       var sending = false;
+      var formReady = false;
 
       function showError(message) {
         errorBox.textContent = message;
@@ -417,90 +360,178 @@
         errorBox.focus();
       }
 
+      function showInvite() {
+        document.documentElement.setAttribute("data-survey", "invite");
+      }
+
+      function showUsed() {
+        document.documentElement.setAttribute("data-survey", "used");
+        var usedTitle = document.getElementById("already-used-title");
+        if (usedTitle) usedTitle.focus();
+      }
+
       function messageFor(code) {
-        if (code === "unauthorized") return "This invitation link isn't valid. Please open the link from your invitation and try again.";
         if (code === "invalid") return "Some answers could not be saved. Please check the required questions and try again.";
         if (code === "busy") return "IBE is receiving reviews right now. Please try again in a moment.";
         return "We couldn't save your review. Please try again in a moment.";
       }
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        if (sending) return;
-        if (!form.checkValidity()) {
-          showError("Please answer the required questions. They are marked with an asterisk.");
-          var firstInvalid = form.querySelector(":invalid");
-          if (firstInvalid) firstInvalid.focus();
-          return;
+      function readJson(response) {
+        return response.text().then(function (text) {
+          try {
+            var body = JSON.parse(text);
+            if (!body || typeof body !== "object") return null;
+            return { ok: body.ok === true, error: body.error || "" };
+          } catch (e) {
+            return null;
+          }
+        });
+      }
+
+      function bindForm() {
+        if (formReady || !form) return;
+        formReady = true;
+        var scoreInput = document.getElementById("recommend");
+        var scoreError = document.getElementById("recommend-error");
+        var scoreMessage = "Enter a whole number from 0 to 10.";
+
+        function wholeScore(raw) {
+          var s = String(raw == null ? "" : raw).trim();
+          if (!/^\d+$/.test(s)) return null;
+          var n = Number(s);
+          if (n > 10) return null;
+          return n;
         }
 
-        errorBox.classList.add("hidden");
-        errorBox.textContent = "";
-        var data = new FormData(form);
-        function val(name) {
-          var raw = data.get(name);
-          return raw == null ? "" : String(raw).trim();
+        function showScoreError(message) {
+          scoreError.textContent = message;
+          scoreError.classList.remove("hidden");
+          scoreInput.setAttribute("aria-invalid", "true");
+          scoreInput.setCustomValidity(message);
         }
 
-        var payload = {
-          token: token,
-          recommend: Number(val("recommend")),
-          reasons: val("reasons"),
-          community: Number(val("community")),
-          memberQuality: Number(val("memberQuality")),
-          passion: Number(val("passion")),
-          listings: Number(val("listings")),
-          connecting: Number(val("connecting")),
-          enjoy: val("enjoy"),
-          improve: val("improve"),
-          name: val("name"),
-          business: val("business"),
-          referral: val("referral"),
-          charity: val("charity"),
-          shareComments: document.getElementById("share-comments").checked
-        };
+        function clearScoreError() {
+          scoreError.textContent = "";
+          scoreError.classList.add("hidden");
+          scoreInput.removeAttribute("aria-invalid");
+          scoreInput.setCustomValidity("");
+        }
 
-        sending = true;
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-        form.setAttribute("aria-busy", "true");
-        statusBox.textContent = "Sending your review.";
+        scoreInput.addEventListener("input", function () {
+          if (wholeScore(scoreInput.value) !== null) clearScoreError();
+        });
 
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload),
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (sending) return;
+          var score = wholeScore(scoreInput.value);
+          if (score === null) showScoreError(scoreMessage);
+          else clearScoreError();
+          if (!form.checkValidity()) {
+            if (score === null) {
+              showError(scoreMessage);
+              scoreInput.focus();
+            } else {
+              showError("Please answer the required questions. They are marked with an asterisk.");
+              var firstInvalid = form.querySelector(":invalid");
+              if (firstInvalid) firstInvalid.focus();
+            }
+            return;
+          }
+
+          errorBox.classList.add("hidden");
+          errorBox.textContent = "";
+          var data = new FormData(form);
+          function val(name) {
+            var raw = data.get(name);
+            return raw == null ? "" : String(raw).trim();
+          }
+
+          var payload = {
+            token: token,
+            recommend: score,
+            reasons: val("reasons"),
+            community: Number(val("community")),
+            memberQuality: Number(val("memberQuality")),
+            passion: Number(val("passion")),
+            listings: Number(val("listings")),
+            connecting: Number(val("connecting")),
+            enjoy: val("enjoy"),
+            improve: val("improve"),
+            referral: val("referral"),
+            charity: val("charity"),
+            shareComments: document.getElementById("share-comments").checked
+          };
+
+          sending = true;
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+          form.setAttribute("aria-busy", "true");
+          statusBox.textContent = "Sending your review.";
+
+          fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload),
+            referrerPolicy: "no-referrer",
+            credentials: "omit",
+            mode: "cors"
+          }).then(readJson).then(function (body) {
+            if (body && body.error === "used") {
+              showUsed();
+              return;
+            }
+            if (body && (body.error === "unknown" || body.error === "unauthorized")) {
+              showInvite();
+              return;
+            }
+            if (!body || body.ok !== true) {
+              showError(messageFor(body && body.error));
+              return;
+            }
+            document.documentElement.setAttribute("data-survey", "done");
+            statusBox.textContent = "";
+            var success = document.getElementById("success-title");
+            if (success) success.focus();
+          }).catch(function () {
+            showError("We couldn't send your review. Please check your connection and try again.");
+          }).then(function () {
+            sending = false;
+            if (document.documentElement.getAttribute("data-survey") === "ready") {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit review";
+              form.removeAttribute("aria-busy");
+            }
+          });
+        });
+      }
+
+      if (document.documentElement.getAttribute("data-survey") === "checking") {
+        var lookup = endpoint + (endpoint.indexOf("?") === -1 ? "?" : "&") + "t=" + encodeURIComponent(token);
+        fetch(lookup, {
+          method: "GET",
           referrerPolicy: "no-referrer",
           credentials: "omit",
           mode: "cors"
-        }).then(function (response) {
-          return response.text().then(function (text) {
-            try {
-              return JSON.parse(text);
-            } catch (e) {
-              return null;
-            }
-          });
-        }).then(function (body) {
-          if (!body || body.ok !== true) {
-            showError(messageFor(body && body.error));
+        }).then(readJson).then(function (body) {
+          if (body && body.ok === true) {
+            document.documentElement.setAttribute("data-survey", "ready");
+            bindForm();
             return;
           }
-          document.documentElement.setAttribute("data-survey", "done");
-          statusBox.textContent = "";
-          var success = document.getElementById("success-title");
-          if (success) success.focus();
-        }).catch(function () {
-          showError("We couldn't send your review. Please check your connection and try again.");
-        }).then(function () {
-          sending = false;
-          if (document.documentElement.getAttribute("data-survey") === "ready") {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit review";
-            form.removeAttribute("aria-busy");
+          if (body && body.error === "used") {
+            showUsed();
+            return;
           }
+          if (body && (body.error === "unknown" || body.error === "unauthorized")) {
+            showInvite();
+            return;
+          }
+          document.documentElement.setAttribute("data-survey", "unavailable");
+        }).catch(function () {
+          document.documentElement.setAttribute("data-survey", "unavailable");
         });
-      });
+      }
     })();
   </script>
 </body>
