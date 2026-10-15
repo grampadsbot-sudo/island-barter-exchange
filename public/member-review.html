@@ -134,7 +134,7 @@
         </noscript>
 
         <div id="checking" class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-6" role="status" aria-live="polite">
-          <p class="text-gray-300 font-playfair">Checking your invitation link…</p>
+          <p id="checking-status" class="text-gray-300 font-playfair">Checking your invitation link…</p>
         </div>
 
         <div id="already-used" class="border-2 border-yellow-600/50 rounded-lg bg-gray-900/50 p-6">
@@ -518,31 +518,151 @@
         });
       }
 
-      if (document.documentElement.getAttribute("data-survey") === "checking") {
+      var checkingStatus = document.getElementById("checking-status");
+      var lookupGeneration = 0;
+      var lookupInFlight = false;
+      var lookupController = null;
+      var lookupRetryTimer = null;
+      var lookupFailures = 0;
+      var lookupSettled = false;
+      var lookupResumeQueued = false;
+
+      function lookupState() {
+        return document.documentElement.getAttribute("data-survey");
+      }
+
+      function lookupVisible() {
+        return document.visibilityState !== "hidden";
+      }
+
+      function clearLookupRetry() {
+        if (!lookupRetryTimer) return;
+        clearTimeout(lookupRetryTimer);
+        lookupRetryTimer = null;
+      }
+
+      function realKind(body) {
+        if (!body) return "";
+        if (body.ok === true) return "ready";
+        if (body.error === "used") return "used";
+        if (body.error === "unknown" || body.error === "unauthorized") return "invite";
+        return "";
+      }
+
+      function abortLookup() {
+        lookupGeneration += 1;
+        lookupInFlight = false;
+        clearLookupRetry();
+        if (!lookupController) return;
+        try { lookupController.abort(); } catch (ignore) {}
+        lookupController = null;
+      }
+
+      function settleLookup() {
+        lookupSettled = true;
+        clearLookupRetry();
+      }
+
+      function applyReal(kind) {
+        if (lookupSettled) return;
+        settleLookup();
+        abortLookup();
+        if (kind === "ready") {
+          document.documentElement.setAttribute("data-survey", "ready");
+          bindForm();
+          return;
+        }
+        if (kind === "used") {
+          showUsed();
+          return;
+        }
+        showInvite();
+      }
+
+      function scheduleLookupRetry() {
+        if (lookupSettled || lookupInFlight || !lookupVisible()) return;
+        if (lookupState() !== "checking") return;
+        if (lookupRetryTimer) return;
+        var delay = 1000 * Math.pow(2, lookupFailures);
+        if (delay > 5000) delay = 5000;
+        lookupFailures += 1;
+        lookupRetryTimer = setTimeout(function () {
+          lookupRetryTimer = null;
+          runLookup();
+        }, delay);
+      }
+
+      function runLookup() {
+        if (lookupSettled || lookupInFlight || !lookupVisible()) return;
+        if (lookupState() !== "checking") return;
+        lookupInFlight = true;
+        var gen = lookupGeneration;
+        var ac = new AbortController();
+        lookupController = ac;
+        var timer = setTimeout(function () {
+          if (gen !== lookupGeneration) return;
+          try { ac.abort(); } catch (ignore) {}
+        }, 10000);
         var lookup = endpoint + (endpoint.indexOf("?") === -1 ? "?" : "&") + "t=" + encodeURIComponent(token);
         fetch(lookup, {
           method: "GET",
           referrerPolicy: "no-referrer",
           credentials: "omit",
-          mode: "cors"
+          mode: "cors",
+          signal: ac.signal
         }).then(readJson).then(function (body) {
-          if (body && body.ok === true) {
-            document.documentElement.setAttribute("data-survey", "ready");
-            bindForm();
+          if (lookupSettled) return;
+          clearTimeout(timer);
+          var kind = realKind(body);
+          if (kind) {
+            applyReal(kind);
             return;
           }
-          if (body && body.error === "used") {
-            showUsed();
-            return;
-          }
-          if (body && (body.error === "unknown" || body.error === "unauthorized")) {
-            showInvite();
-            return;
-          }
-          document.documentElement.setAttribute("data-survey", "unavailable");
+          if (gen !== lookupGeneration) return;
+          lookupInFlight = false;
+          lookupController = null;
+          if (!lookupVisible()) return;
+          scheduleLookupRetry();
         }).catch(function () {
-          document.documentElement.setAttribute("data-survey", "unavailable");
+          if (gen !== lookupGeneration || lookupSettled) return;
+          clearTimeout(timer);
+          lookupInFlight = false;
+          lookupController = null;
+          if (!lookupVisible()) return;
+          scheduleLookupRetry();
         });
+      }
+
+      function queueLookupResume() {
+        if (lookupResumeQueued || lookupSettled) return;
+        if (lookupState() !== "checking") return;
+        lookupResumeQueued = true;
+        setTimeout(function () {
+          lookupResumeQueued = false;
+          if (lookupSettled || lookupState() !== "checking" || !lookupVisible()) return;
+          abortLookup();
+          runLookup();
+        }, 0);
+      }
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "hidden") {
+          abortLookup();
+          return;
+        }
+        queueLookupResume();
+      });
+
+      window.addEventListener("pageshow", function (event) {
+        if (event.persisted) queueLookupResume();
+      });
+
+      if (lookupState() === "checking") {
+        setTimeout(function () {
+          if (lookupSettled || lookupState() !== "checking" || !checkingStatus) return;
+          checkingStatus.textContent = "Still checking your link, this can take a few seconds…";
+        }, 3000);
+        runLookup();
       }
     })();
   </script>
